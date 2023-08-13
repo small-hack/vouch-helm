@@ -46,4 +46,4 @@ jobs:
       - name: Run chart-testing (install)
         id: install
         if: steps.list-changed.outputs.changed == 'true'
-        run: ct install --target-branch ${{ github.event.repository.default_branch }} --helm-extra-set-args="--set=config.vouch.domains=example.com --set=config.vouch.whiteList=test@example.com" --helm-extra-args="--timeout 150s"
+        run: ct install --target-branch ${{ github.event.repository.default_branch }} --helm-extra-args="--timeout 150s"
