@@ -122,7 +122,7 @@ spec:
                   name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.tokenUrl }}
             {{- end }}
-            {{- if or .Values.config.oauth.user_infoUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.userInfoUrl) }}
+            {{- if or .Values.config.oauth.userInfoUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.userInfoUrl) }}
             - name: OAUTH_USER_INFO_URL
               valueFrom:
                 secretKeyRef:
