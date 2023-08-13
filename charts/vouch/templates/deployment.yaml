@@ -60,12 +60,87 @@ spec:
             {{- toYaml .Values.args | nindent 12 }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          {{- if not .Values.config.overrideConfigExistingSecretName }}
             - name: VOUCH_PORT
               value: {{ .Values.config.vouch.port | quote }}
+            - name: VOUCH_LOGLEVEL
+              value: {{ .Values.config.vouch.logLevel | quote }}
+            - name: VOUCH_TESTING
+              value: {{ .Values.config.vouch.testing | quote }}
+            - name: VOUCH_ALLOWALLUSERS
+              value: {{ .Values.config.vouch.allowAllUsers }}
+            - name: VOUCH_DOMAINS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.vouch.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.vouch.secretKeys.domains }}
+            - name: VOUCH_WHITELIST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.vouch.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.vouch.secretKeys.whiteList }}
+            - name: VOUCH_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.vouch.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.vouch.secretKeys.jwtSecret }}
+            - name: OAUTH_PROVIDER
+              value: {{ .Values.config.oauth.provider }}
+            - name: OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.oauth.secretKeys.clientId }}
+            - name: OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.oauth.secretKeys.clientSecret }}
+            {{- if or .Values.config.oauth.authUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.authUrl) }}
+            - name: OAUTH_AUTH_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.oauth.secretKeys.authUrl }}
+            {{- end }}
+            {{- if or .Values.config.oauth.tokenUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.tokenUrl) }}
+            - name: OAUTH_TOKEN_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.oauth.secretKeys.tokenUrl }}
+            {{- end }}
+            {{- if or .Values.config.oauth.user_infoUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.userInfoUrl) }}
+            - name: OAUTH_USER_INFO_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.oauth.secretKeys.userInfoUrl }}
+            {{- end }}
+            {{- if or .Values.config.oauth.callbackUrls (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.callbackUrls) }}
+            - name: OAUTH_CALLBACK_URLS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.oauth.secretKeys.callbackUrls }}
+            {{- end }}
+            - name: OAUTH_SCOPES
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}
+                  key: scopes
+            {{- if or .Values.config.oauth.preferredDomain (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.preferredDomain ) }}
+            - name: OAUTH_PREFERREDDOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  key: {{ .Values.config.oauth.secretKeys.preferredDomain }}
+            {{- end }}
             {{- range .Values.extraEnvVars }}
             - name: {{ .name }}
               value: {{ .value | quote }}
             {{- end }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.config.vouch.port }}
@@ -106,14 +181,18 @@ spec:
           volumeMounts:
           - name: data
             mountPath: /data
+          {{ if .Values.config.overrideConfigExistingSecretName }}
           - name: config
             mountPath: /config
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
+      {{ if .Values.config.overrideConfigExistingSecretName }}
       - name: config
         secret:
-          secretName: {{ if .Values.config.existingSecretName }}{{ .Values.config.existingSecretName }}{{- else }}{{ template "vouch.fullname" . }}{{- end }}
+          secretName: {{ .Values.config.overrideConfigExistingSecretName }}
+      {{- end }}
       - name: data
         emptyDir: {}
       {{- with .Values.nodeSelector }}
