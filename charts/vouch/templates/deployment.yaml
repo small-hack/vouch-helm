@@ -72,56 +72,56 @@ spec:
             - name: VOUCH_DOMAINS
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.vouch.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.config.secret.name" . }}
                   key: {{ .Values.config.vouch.secretKeys.domains }}
             - name: VOUCH_WHITELIST
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.vouch.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.config.secret.name" . }}
                   key: {{ .Values.config.vouch.secretKeys.whiteList }}
             - name: VOUCH_JWT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.vouch.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.config.secret.name" . }}
                   key: {{ .Values.config.vouch.secretKeys.jwtSecret }}
             - name: OAUTH_PROVIDER
               value: {{ .Values.config.oauth.provider }}
             - name: OAUTH_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.clientId }}
             - name: OAUTH_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.clientSecret }}
             {{- if or .Values.config.oauth.authUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.authUrl) }}
             - name: OAUTH_AUTH_URL
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.authUrl }}
             {{- end }}
             {{- if or .Values.config.oauth.tokenUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.tokenUrl) }}
             - name: OAUTH_TOKEN_URL
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.tokenUrl }}
             {{- end }}
             {{- if or .Values.config.oauth.user_infoUrl (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.userInfoUrl) }}
             - name: OAUTH_USER_INFO_URL
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.userInfoUrl }}
             {{- end }}
             {{- if or .Values.config.oauth.callbackUrls (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.callbackUrls) }}
             - name: OAUTH_CALLBACK_URLS
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.callbackUrls }}
             {{- end }}
             - name: OAUTH_SCOPES
@@ -133,7 +133,7 @@ spec:
             - name: OAUTH_PREFERREDDOMAIN
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.config.oauth.existingSecret | default .Release.Name }}
+                  name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.preferredDomain }}
             {{- end }}
             {{- range .Values.extraEnvVars }}
