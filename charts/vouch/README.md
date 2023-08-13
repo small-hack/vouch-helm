@@ -42,7 +42,7 @@ An SSO and OAuth login solution for nginx using the auth_request module.
 | config.oauth.userInfoUrl | string | `""` | user info Url from your oidc provider |
 | config.overrideConfigExistingSecret | string | `""` | Allow overriding the ENTIRE config.yaml value with an existing secret, like a sealed secret. If not empty string, ALL  values under config are ignored except for config.existing. For all possible config.yaml values, see: https://github.com/vouch/vouch-proxy/blob/master/config/config.yml_example |
 | config.vouch.allowAllUsers | bool | `false` | whether or not to allow ALL users to login |
-| config.vouch.domains | list | `[]` | specific domains you'd like to allow access from |
+| config.vouch.domains | list | `[]` | array of specific domains you'd like to allow access from |
 | config.vouch.existingSecret | string | `""` | existingSecret for domains, whiteList, and jwtSecret. If this value is not empty, we ignore vouch.domains, vouch.whiteList, and vouch.jwt.secret |
 | config.vouch.jwt.secret | string | `""` | pass in a secret to used for cookies |
 | config.vouch.logLevel | string | `"debug"` | logging level for vouch |
@@ -51,7 +51,7 @@ An SSO and OAuth login solution for nginx using the auth_request module.
 | config.vouch.secretKeys.jwtSecret | string | `"jwtSecret"` | secret key in vouch.existingSecret to pass in a secret to used for cookies |
 | config.vouch.secretKeys.whiteList | string | `"whiteList"` | secret key in vouch.existingSecret with comma seperated list of emails for users that allowed to use SSO via vouch. Example secret value in your 'friend@coolcats.com,kitty@coolcats.com' |
 | config.vouch.testing | bool | `false` | if you enable this, it will    force all 302 redirects to be rendered as a webpage with a link |
-| config.vouch.whiteList | list | `[]` | list of emails for users that allowed to use SSO via vouch |
+| config.vouch.whiteList | list | `[]` | array of emails for users that allowed to use SSO via vouch |
 | deploymentAnnotations | object | `{}` |  |
 | extraEnvVars | list | `[]` | An array to add extra environment variables |
 | fullnameOverride | string | `""` |  |

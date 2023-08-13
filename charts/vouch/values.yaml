@@ -124,9 +124,9 @@ config:
     testing: false
     # -- the container port for vouch
     port: 9090
-    # -- specific domains you'd like to allow access from
+    # -- array of specific domains you'd like to allow access from
     domains: []
-    # -- list of emails for users that allowed to use SSO via vouch
+    # -- array of emails for users that allowed to use SSO via vouch
     whiteList: []
     # -- whether or not to allow ALL users to login
     allowAllUsers: false
