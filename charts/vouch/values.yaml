@@ -111,7 +111,7 @@ deploymentAnnotations: {}
 # bare minimum to get vouch running with google
 
 config:
-  # -- Allow overriding the ENTIRE config.yaml value with an existing secret, 
+  # -- Allow overriding the ENTIRE config.yaml value with an existing secret,
   # like a sealed secret. If not empty string, ALL  values under config are ignored
   # except for config.existing. For all possible config.yaml values, see:
   # https://github.com/vouch/vouch-proxy/blob/master/config/config.yml_example

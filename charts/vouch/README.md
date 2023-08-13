@@ -40,7 +40,7 @@ An SSO and OAuth login solution for nginx using the auth_request module.
 | config.oauth.secretKeys.userInfoUrl | string | `"userInfoUrl"` | secret key in oauth.existingSecret for userInfoUrl from your oidc provider |
 | config.oauth.tokenUrl | string | `""` | token url from your oidc provider |
 | config.oauth.userInfoUrl | string | `""` | user info Url from your oidc provider |
-| config.overrideConfigExistingSecret | string | `""` | Allow overriding the ENTIRE config.yaml value with an existing secret,  like a sealed secret. If not empty string, ALL  values under config are ignored except for config.existing. For all possible config.yaml values, see: https://github.com/vouch/vouch-proxy/blob/master/config/config.yml_example |
+| config.overrideConfigExistingSecret | string | `""` | Allow overriding the ENTIRE config.yaml value with an existing secret, like a sealed secret. If not empty string, ALL  values under config are ignored except for config.existing. For all possible config.yaml values, see: https://github.com/vouch/vouch-proxy/blob/master/config/config.yml_example |
 | config.vouch.allowAllUsers | bool | `false` | whether or not to allow ALL users to login |
 | config.vouch.domains | list | `[]` | specific domains you'd like to allow access from |
 | config.vouch.existingSecret | string | `""` | existingSecret for domains, whiteList, and jwtSecret. If this value is not empty, we ignore vouch.domains, vouch.whiteList, and vouch.jwt.secret |
