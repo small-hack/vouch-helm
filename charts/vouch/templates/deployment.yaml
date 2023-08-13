@@ -68,7 +68,7 @@ spec:
             - name: VOUCH_TESTING
               value: {{ .Values.config.vouch.testing | quote }}
             - name: VOUCH_ALLOWALLUSERS
-              value: {{ .Values.config.vouch.allowAllUsers }}
+              value: {{ .Values.config.vouch.allowAllUsers | quote }}
             - name: VOUCH_DOMAINS
               valueFrom:
                 secretKeyRef:
