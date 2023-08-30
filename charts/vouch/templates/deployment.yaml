@@ -138,7 +138,7 @@ spec:
             {{- end }}
             {{- if .Values.config.oauth.scopes }}
             - name: OAUTH_SCOPES
-              value: .Values.config.oauth.scopes
+              value: {{ join "," .Values.config.oauth.scopes }}
             {{- end }}
             {{- if or .Values.config.oauth.preferredDomain (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.preferredDomain ) }}
             - name: OAUTH_PREFERREDDOMAIN
