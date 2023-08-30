@@ -138,10 +138,7 @@ spec:
             {{- end }}
             {{- if .Values.config.oauth.scopes }}
             - name: OAUTH_SCOPES
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Release.Name }}
-                  key: scopes
+              value: .Values.config.oauth.scopes
             {{- end }}
             {{- if or .Values.config.oauth.preferredDomain (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.preferredDomain ) }}
             - name: OAUTH_PREFERREDDOMAIN
