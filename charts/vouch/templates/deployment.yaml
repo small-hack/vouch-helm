@@ -136,6 +136,13 @@ spec:
                   name: {{ template "vouch.oauth.secret.name" . }}
                   key: {{ .Values.config.oauth.secretKeys.callbackUrls }}
             {{- end }}
+            {{- if or .Values.config.oauth.endSessionEndpoint (and .Values.config.oauth.existingSecret .Values.config.oauth.secretKeys.endSessionEndpoint) }}
+            - name: OAUTH_END_SESSION_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "vouch.oauth.secret.name" . }}
+                  key: {{ .Values.config.oauth.secretKeys.endSessionEndpoint }}
+            {{- end }}
             {{- if .Values.config.oauth.scopes }}
             - name: OAUTH_SCOPES
               value: {{ join "," .Values.config.oauth.scopes }}
