@@ -17,7 +17,7 @@ keywords:
   - sso
   - sso-login
 
-version: 4.1.1
+version: 4.1.2
 
 # renovate: image=quay.io/vouch/vouch-proxy
 appVersion: "0.39"

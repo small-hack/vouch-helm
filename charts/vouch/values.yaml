@@ -165,6 +165,8 @@ config:
     userInfoUrl: ''
     # -- array of scopes to get from the provider e.g. [openid, email, profile]
     scopes: []
+    # -- end session endpoint is usually the IdP's logout URL
+    endSessionEndpoint: ""
     # -- valid callback urls to use, example https://vouch.example.com/auth
     callbackUrls: []
     # -- preferred domain
@@ -190,6 +192,8 @@ config:
       # callback urls to use, example value for your key in your existing secert:
       # 'https://vouch.example.com/auth,https://vouch.example.com/login'
       callbackUrls: 'callbackUrls'
+      # -- secret key in oauth.existingSecret for your end session end_session_endpoint
+      endSessionEndpoint: 'endSessionEndpoint'
       # -- secret key in oauth.existingSecret for your preferred domain
       preferredDomain: 'preferredDomain'
 

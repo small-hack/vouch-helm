@@ -1,6 +1,6 @@
 # vouch
 
-![Version: 4.1.1](https://img.shields.io/badge/Version-4.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.39](https://img.shields.io/badge/AppVersion-0.39-informational?style=flat-square)
+![Version: 4.1.2](https://img.shields.io/badge/Version-4.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.39](https://img.shields.io/badge/AppVersion-0.39-informational?style=flat-square)
 
 An SSO and OAuth login solution for nginx using the auth_request module.
 
@@ -27,6 +27,7 @@ An SSO and OAuth login solution for nginx using the auth_request module.
 | config.oauth.callbackUrls | list | `[]` | valid callback urls to use, example https://vouch.example.com/auth |
 | config.oauth.clientId | string | `""` | clientID from  your provider |
 | config.oauth.clientSecret | string | `""` | clientSecret from your provider |
+| config.oauth.endSessionEndpoint | string | `""` | end session endpoint is usually the IdP's logout URL |
 | config.oauth.existingSecret | string | `""` | existingSecret for clientId, clientSecret, authUrl, tokenUrl, userInfoUrl, scopes, callbackUrls, and preferredDomain. If this value is not empty, we will ignore all of those plain text values and only use your secret keys |
 | config.oauth.preferredDomain | string | `""` | preferred domain |
 | config.oauth.provider | string | `""` | oauth2 provider, such as keycloak |
@@ -35,6 +36,7 @@ An SSO and OAuth login solution for nginx using the auth_request module.
 | config.oauth.secretKeys.callbackUrls | string | `"callbackUrls"` | secret key in oauth.existingSecret for commas seperated list of valid callback urls to use, example value for your key in your existing secert: 'https://vouch.example.com/auth,https://vouch.example.com/login' |
 | config.oauth.secretKeys.clientId | string | `"clientId"` | secret key in oauth.existingSecret for the clientID from your provider |
 | config.oauth.secretKeys.clientSecret | string | `"clientSecret"` | secret key in oauth.existingSecret for clientSecret from your provider |
+| config.oauth.secretKeys.endSessionEndpoint | string | `"endSessionEndpoint"` | secret key in oauth.existingSecret for your end session end_session_endpoint |
 | config.oauth.secretKeys.preferredDomain | string | `"preferredDomain"` | secret key in oauth.existingSecret for your preferred domain |
 | config.oauth.secretKeys.tokenUrl | string | `"tokenUrl"` | secret key in oauth.existingSecret for token url from your oidc provider |
 | config.oauth.secretKeys.userInfoUrl | string | `"userInfoUrl"` | secret key in oauth.existingSecret for userInfoUrl from your oidc provider |
