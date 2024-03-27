@@ -1,7 +1,7 @@
 # Vouch Helm Charts
-<a href="https://github.com/jessebot/vouch-helm-chart/releases"><img src="https://img.shields.io/github/v/release/jessebot/vouch-helm-chart?style=plastic&labelColor=blue&color=green&logo=GitHub&logoColor=white"></a>
+<a href="https://github.com/small-hack/vouch-helm/releases"><img src="https://img.shields.io/github/v/release/small-hack/vouch-helm?style=plastic&labelColor=blue&color=green&logo=GitHub&logoColor=white"></a>
 
-This is a [fork](https://github.com/jessebot/vouch-helm-chart) of the [official Vouch helm chart](https://github.com/vouch/helm-charts) with some quality of life updates to match standard helm chart style. It's actively maintained and kept up to date by @jessebot and renovateBot, so if a new version of the Vouch docker image comes out, we'll automatically get a PR to update it :)
+This is a [fork](https://github.com/small-hack/vouch-helm-chart) of the [official Vouch helm chart](https://github.com/vouch/helm-charts) with some quality of life updates to match standard helm chart style. It's actively maintained and kept up to date by @jessebot and renovateBot, so if a new version of the Vouch docker image comes out, we'll automatically get a PR to update it :)
 
 # Usage
 
@@ -9,7 +9,7 @@ Make sure you have helm installed. To get started with helm, read their [documen
 Here's the basics of running this chart, however you'll want to update your [`values.yaml`](./charts/vouch/values.yaml).
 
 ```console
-helm repo add vouch https://jessebot.github.io/helm-charts/
+helm repo add vouch https://small-hack.github.io/vouch-helm
 helm repo update
 helm install vouch/vouch vouch --values.yaml
 ```
