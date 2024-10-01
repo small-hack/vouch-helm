@@ -20,7 +20,7 @@ keywords:
 version: 4.2.0
 
 # renovate: image=quay.io/vouch/vouch-proxy
-appVersion: "0.40.0"
+appVersion: "0.41.0"
 
 maintainers:
   - name: jessebot
