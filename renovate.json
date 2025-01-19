@@ -17,7 +17,8 @@
         "matchManagers": ["github-actions"],
         "matchUpdateTypes": ["patch","minor"],
         "automerge": true,
-        "automergeType": "branch"
+        "automergeType": "branch",
+        "ignoreTests": true
       },
       {
         "description": "Fix version in Chart.yaml after helmv3 dep patch updates",
