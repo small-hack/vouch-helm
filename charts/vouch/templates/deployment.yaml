@@ -60,7 +60,7 @@ spec:
             {{- toYaml .Values.args | nindent 12 }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          {{- if not .Values.config.overrideConfigExistingSecretName }}
+          {{- if not .Values.config.overrideConfigExistingSecret }}
             - name: VOUCH_PORT
               value: {{ .Values.config.vouch.port | quote }}
             - name: VOUCH_LOGLEVEL
