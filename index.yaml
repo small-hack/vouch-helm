@@ -2,6 +2,32 @@ apiVersion: v1
 entries:
   vouch:
   - apiVersion: v2
+    appVersion: 0.45.1
+    created: "2025-10-24T11:08:14.482703858Z"
+    description: An SSO and OAuth login solution for nginx using the auth_request
+      module.
+    digest: ae8523cd400be1741d8605be16c13a35c4745c14f11d88e5bde2ce3bc0eac771
+    home: https://github.com/vouch/vouch-proxy/
+    icon: https://avatars0.githubusercontent.com/u/45102943?s=200&v=4
+    keywords:
+    - nginx
+    - auth
+    - oauth2
+    - authentication
+    - nginx-proxy
+    - sso
+    - sso-login
+    maintainers:
+    - name: jessebot
+      url: https://github.com/jessebot
+    name: vouch
+    sources:
+    - https://github.com/vouch/vouch-proxy/
+    type: application
+    urls:
+    - https://github.com/small-hack/vouch-helm/releases/download/vouch-5.0.0/vouch-5.0.0.tgz
+    version: 5.0.0
+  - apiVersion: v2
     appVersion: 0.41.0
     created: "2025-01-19T20:11:10.567806252Z"
     description: An SSO and OAuth login solution for nginx using the auth_request
@@ -269,4 +295,4 @@ entries:
     urls:
     - https://github.com/jessebot/vouch-helm-chart/releases/download/vouch-3.3.0/vouch-3.3.0.tgz
     version: 3.3.0
-generated: "2025-01-19T20:11:10.567849643Z"
+generated: "2025-10-24T11:08:14.48274047Z"
