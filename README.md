@@ -1,3 +1,7 @@
+# ⚠️ Notice of migration
+
+find us on https://codeberg.org/small-hack/vouch-helm
+
 # Vouch Helm Charts
 <a href="https://github.com/small-hack/vouch-helm/releases"><img src="https://img.shields.io/github/v/release/small-hack/vouch-helm?style=plastic&labelColor=blue&color=green&logo=GitHub&logoColor=white"></a>
 
